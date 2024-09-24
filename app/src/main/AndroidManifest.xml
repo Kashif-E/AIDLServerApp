@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kashif.aidlmessage">
+    <!-- Define Custom Permission for Security -->
+    <permission
+        android:name="com.kashif.aidlmessage.permission.BIND_COMMUNICATION_SERVICE"
+        android:protectionLevel="signature" />
+
+    <!-- Communication Service Declaration -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.AIDLMessage"
+        android:supportsRtl="true">
+
+
+        <service
+            android:name="com.kashif.aidleventcommunicator.communication.CommunicationService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.kashif.aidlmessage.permission.BIND_COMMUNICATION_SERVICE">
+            <intent-filter>
+                <action android:name="com.kashif.aidleventcommunicator.communication.ICommunicationService" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AIDLMessage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
